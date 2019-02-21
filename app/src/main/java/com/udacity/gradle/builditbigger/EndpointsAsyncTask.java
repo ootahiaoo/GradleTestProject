@@ -1,9 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import com.example.android.jokedisplay.JokeDisplayMainActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -17,6 +15,10 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private Context context;
     private AsyncTaskListener mListener = null;
     private Exception mError = null;
+
+    public EndpointsAsyncTask(AsyncTaskListener test) {
+        mListener = test;
+    }
 
     @Override
     protected String doInBackground(Context... params) {
@@ -51,9 +53,6 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if (this.mListener != null) this.mListener.onComplete(result, mError);
-        Intent intent = new Intent(context, JokeDisplayMainActivity.class);
-        intent.putExtra("JOKE_KEY", result);
-        context.startActivity(intent);
     }
 
     @Override
@@ -65,6 +64,6 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     }
 
     public static interface AsyncTaskListener {
-        public void onComplete(String result, Exception e);
+        void onComplete(String result, Exception e);
     }
 }
