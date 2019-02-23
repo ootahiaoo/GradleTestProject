@@ -19,3 +19,12 @@ Feb 23, 2019 8:16:00 AM com.google.appengine.tools.development.AbstractModule st
 INFO: The admin console is running at http://localhost:8080/_ah/admin
 Feb 23, 2019 5:16:00 PM com.google.appengine.tools.development.DevAppServerImpl doStart
 INFO: Dev App Server is now running
+Feb 23, 2019 5:16:05 PM com.google.appengine.tools.development.LocalResourceFileServlet doGet
+WARNING: No file found for: /favicon.ico
+Feb 23, 2019 5:16:05 PM com.google.appengine.repackaged.com.google.protobuf.UnsafeUtil supportsUnsafeByteBufferOperations
+WARNING: platform method missing - proto runtime falling back to safer methods: java.security.AccessControlException: access denied ("java.lang.RuntimePermission" "accessClassInPackage.sun.misc")
+Feb 23, 2019 5:16:05 PM com.google.appengine.repackaged.com.google.protobuf.UnsafeUtil supportsUnsafeArrayOperations
+WARNING: platform method missing - proto runtime falling back to safer methods: java.security.AccessControlException: access denied ("java.lang.RuntimePermission" "accessClassInPackage.sun.misc")
+Feb 23, 2019 5:18:24 PM com.google.appengine.tools.development.AbstractModule shutdown
+INFO: Shutting down module instance default
+Shutting down.
