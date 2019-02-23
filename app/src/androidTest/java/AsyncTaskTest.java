@@ -21,15 +21,14 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class AsyncTaskTest {
 
-    private String mResultString = null;
-    private Exception mError = null;
+    private String mResultString;
     private CountDownLatch signal = null;
     private Context mContext;
+    private EndpointsAsyncTask asyncTask;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule =
@@ -48,20 +47,30 @@ public class AsyncTaskTest {
     @Test
     public void testAsyncTask() throws InterruptedException {
         onView(withId(R.id.button_joke)).perform(click());
-        EndpointsAsyncTask task = new EndpointsAsyncTask();
-        task.setListener(new EndpointsAsyncTask.AsyncTaskListener() {
+//        EndpointsAsyncTask task = new EndpointsAsyncTask();
+//        task.setListener(new EndpointsAsyncTask.AsyncTaskListener() {
+//            @Override
+//            public void onComplete(String result, Exception e) {
+//                mResultString = result;
+//                mError = e;
+//                signal.countDown();
+//            }
+//        }).execute(mContext);
+//        signal.await();
+//
+
+        asyncTask =
+                (EndpointsAsyncTask) new EndpointsAsyncTask(new EndpointsAsyncTask.AsyncTaskListener() {
+
             @Override
             public void onComplete(String result, Exception e) {
                 mResultString = result;
-                mError = e;
                 signal.countDown();
             }
         }).execute(mContext);
         signal.await();
 
-        assertNull(mError);
         assertFalse(TextUtils.isEmpty(mResultString));
-        assertTrue(!TextUtils.isEmpty(mResultString));
     }
 
     @After
