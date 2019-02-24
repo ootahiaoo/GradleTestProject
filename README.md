@@ -25,18 +25,21 @@ git clone https://github.com/ootahiaoo/GradleTestProject.git
 ### Step 2
 Before going ahead you will need to be able to run a local instance of the GCE 
 server. In order to do that you will have to install the Cloud SDK:
+
 https://cloud.google.com/sdk/docs/
 
 Once installed, you will need to follow the instructions in the Setup Cloud SDK
 section at:
+
 https://cloud.google.com/endpoints/docs/frameworks/java/migrating-android
+
 **Note:** _You do not need to follow the rest of steps in the migration guide, only
 the Setup Cloud SDK._
 
 Start or stop your local server by using the gradle tasks as shown in the following
 screenshot:
 
-<img src="/FinalProject/GCE-server-gradle-tasks.png" height="500">
+<img src="/GradleTestProject/GCE-server-gradle-tasks.png" height="500">
 
 Once your local GCE server is started you should see the following at 
 [localhost:8080](http://localhost:8080)
